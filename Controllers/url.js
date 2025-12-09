@@ -2,10 +2,10 @@ import { Url } from "../Models/Url.js";
 import shortid from "shortid";
 
 export const shortUrl = async (req, res) => {
-  const longUrl = req.body.longUrl;
+  const longUrl = req.body.longUrl; //form ma deko name ko ho
   const shortCode = shortid.generate();
 
-  const shortUrl = `http://localhost:1000/${shortCode}`;
+  const shortUrl = `http://localhost:1000/${shortCode}`;//local host vara ho ,deploy garya vaye vercal ko link huntho
 
   // save to database
   const newUrl = new Url({ shortCode, longUrl });

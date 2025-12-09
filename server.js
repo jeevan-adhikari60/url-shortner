@@ -1,20 +1,21 @@
 import express from 'express'
 import mongoose from 'mongoose';
 import { shortUrl, getOriginalUrl } from "./Controllers/url.js";
+import dotenv from 'dotenv';  
+dotenv.config();
+
 
 const app = express();
 
 app.use(express.urlencoded({extended:true}))
 
 mongoose
-  .connect(
-    "mongodb+srv://jeevanbhai6676_db_user:GorQFY6l3jp1t1Eu@cluster0.s4fc8tr.mongodb.net/",
-    {
-      dbName: "Backend_practice",
-    }
-  )
-  .then(() => console.log("MongoDb Connected..!"))
+  .connect(process.env.MONGO_URL, {
+    dbName: "Backend_practice",
+  })
+  .then(() => console.log("MongoDB Connected..!"))
   .catch((err) => console.log(err));
+
 
 
   // rendering the ejs file
